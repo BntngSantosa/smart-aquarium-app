@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iot-app</title>
 
-    <link rel="stylesheet" href="../iot-project/public/dist/output.css" />
+    <link rel="stylesheet" href="../../iot-project/public/dist/output.css" />
     <script src="https://kit.fontawesome.com/76e513ada2.js" crossorigin="anonymous"></script>
 </head>
 <body class="font-QuickSand bg-color-bg">
     <header class="w-full px-10 py-5 bg-white shadow-sm flex items-center justify-between fixed">
         <div class="flex items-center gap-[10px]">
-            <img class="w-8 h-8w-8" src="../iot-project/assets/images/logo.png" alt="logo">
+            <img class="w-8 h-8w-8" src="../../iot-project/assets/images/logo.png" alt="logo">
             <p class="text-md text-primary font-bold">ocean<span class="font-bold text-logo-color">Sage</span></p>
         </div>
         <div class="">
         <a href="https://www.itenas.ac.id" target="_blank">
-            <img src="../iot-project/assets/images/itenas-logo-full.png" alt="itenas logo" class="w-[80px] sm:w-[100px] block"/>
+            <img src="../../iot-project/assets/images/itenas-logo-full.png" alt="itenas logo" class="w-[80px] sm:w-[100px] block"/>
         </a>
         </div>
     </header>
     <main>
         <section class="w-full h-screen flex px-5 items-center justify-center">
-            <form action="../iot-project/controllers/LoginController.php" method="post" class="w-[90%] p-10 bg-white rounded-[16px] shadow-md flex flex-col justify-between gap-5 sm:w-[70%] md:w-[50%] lg:w-[35%]">
+            <form action="../../iot-project/controllers/LoginController.php" method="post" class="w-[90%] p-10 bg-white rounded-[16px] shadow-md flex flex-col justify-between gap-5 sm:w-[70%] md:w-[50%] lg:w-[35%]">
                 <h1 class="font-bold text-2xl text-center text-primary">LOGIN</h1>
                 <div class="w-full">
                     <label class="font-medium text-sm text-primary" for="username">Username</label>
@@ -45,7 +45,7 @@
 
     <?php
         if (isset($_GET['loginFailed']) && $_GET['loginFailed'] === 'true') {
-            echo '<script src="../iot-project/assets/js/modalfailed.js"></script>';
+            echo '<script src="../../iot-project/assets/js/modalfailed.js"></script>';
             echo '<script>showModalFailed();</script>';
         }
     ?>
