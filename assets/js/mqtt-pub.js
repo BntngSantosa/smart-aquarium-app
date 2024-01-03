@@ -35,8 +35,10 @@ toggleOnOff.forEach((toggleOnOffItem, index) => {
   }
 
   // Define variables to store the initial state
-  let initialStateToggle = toggleOnOffItem.classList.contains("bg-light-yellow");
-  let initialStateBall = toggleBall[index].classList.contains("translate-x-[34px]");
+  let initialStateToggle =
+    toggleOnOffItem.classList.contains("bg-light-yellow");
+  let initialStateBall =
+    toggleBall[index].classList.contains("translate-x-[34px]");
 
   toggleOnOffItem.addEventListener("click", () => {
     toggleOnOffItem.classList.toggle("bg-light-yellow");
@@ -48,8 +50,14 @@ toggleOnOff.forEach((toggleOnOffItem, index) => {
     }
 
     // Save the toggle state to local storage
-    localStorage.setItem(`toggleState${index}`, toggleOnOffItem.classList.contains("bg-light-yellow"));
-    localStorage.setItem(`toggleBall${index}`, correspondingToggleBall.classList.contains("translate-x-[34px]"));
+    localStorage.setItem(
+      `toggleState${index}`,
+      toggleOnOffItem.classList.contains("bg-light-yellow")
+    );
+    localStorage.setItem(
+      `toggleBall${index}`,
+      correspondingToggleBall.classList.contains("translate-x-[34px]")
+    );
 
     // Call the publish function when the button is clicked with different messages based on the index
     if (index === 0) {
@@ -70,21 +78,24 @@ toggleOnOff.forEach((toggleOnOffItem, index) => {
 
     // Update the initial states after the first click
     initialStateToggle = toggleOnOffItem.classList.contains("bg-light-yellow");
-    initialStateBall = correspondingToggleBall.classList.contains("translate-x-[34px]");
+    initialStateBall =
+      correspondingToggleBall.classList.contains("translate-x-[34px]");
   });
 });
 
-function publishToggleStatus(isOn, device, initialState) {
-  const brokerHost = "broker.hivemq.com";
-  const brokerPort = 8000;
+function publishToggleStatus(isOn, device) {
+  const brokerHost = "wss://9e45f7d1372d4c9ab98653b91674d92e.s2.eu.hivemq.cloud:8884/mqtt";
 
   const clientID = generateClientId();
-  const publisher = new Paho.MQTT.Client(brokerHost, brokerPort, clientID);
+  const publisher = new Paho.MQTT.Client(brokerHost, clientID);
 
   const options = {
     timeout: 3,
+    userName: "bntngSantosa",
+    password: "Qwerty#1233",
+    useSSL: true,
     onSuccess: onPublishSuccess,
-    onFailure: onPublishFailure,
+    onFailure: onPublishSuccess,
   };
 
   publisher.connect(options);

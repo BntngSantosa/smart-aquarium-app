@@ -49,14 +49,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../views/DashboardView.php");
         exit();
     } else {
-        header("Location: ../public?loginFailed=true");
+        header("Location: ../?loginFailed=true");
         exit();
     }
 } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['action']) && $_GET['action'] == 'logout') {
     // Logout
     session_start();
     session_destroy();
-    header("Location: ../public/");
+    header("Location: ../");
     exit();
 }
 

@@ -39,11 +39,10 @@ function onConnectHandler() {
     notifConnected.classList.replace("-right-[100%]", "right-10");
     sessionStorage.setItem(connectionFlagKey, "true");
   }
-  
+
   setTimeout(() => {
     notifConnected.classList.replace("right-10", "-right-[100%]");
   }, 2000);
-  
 }
 
 function subscribeToTopic() {
@@ -145,7 +144,7 @@ function onMessageArrived(message) {
 }
 
 function sendSensorDataToPHP(sensorData) {
-  const url = "../config/saveData.php";
+  const url = "../../api/post_data.php";
   const xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -178,15 +177,17 @@ function generateClientId() {
 }
 
 function MQTTconnect() {
-  const brokerHost = "broker.hivemq.com";
-  const brokerPort = 8000;
+  const brokerHost = "wss://9e45f7d1372d4c9ab98653b91674d92e.s2.eu.hivemq.cloud:8884/mqtt";
 
   const clientID = generateClientId();
 
-  mqtt = new Paho.MQTT.Client(brokerHost, brokerPort, clientID);
+  mqtt = new Paho.MQTT.Client(brokerHost, clientID);
 
   const options = {
     timeout: 3,
+    userName: "bntngSantosa",
+    password: "Qwerty#1233",
+    useSSL: true,
     onSuccess: onConnectHandler,
     onFailure: failedHandler,
   };

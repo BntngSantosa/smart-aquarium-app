@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iot-app</title>
-
-    <link rel="stylesheet" href="../../iot-project/public/dist/output.css" />
+    <link rel="icon" type="image/png" href="../iot-project/assets/images/logo.png">
+    <link rel="stylesheet" href="dist/output.css" />
     <script src="https://kit.fontawesome.com/76e513ada2.js" crossorigin="anonymous"></script>
 </head>
 <body class="font-QuickSand bg-color-bg">
@@ -49,5 +49,6 @@
             echo '<script>showModalFailed();</script>';
         }
     ?>
+    
 </body>
 </html>

@@ -30,6 +30,10 @@ const isDarkMode = localStorage.getItem("darkMode") === "true";
 if (isDarkMode) {
   iconDarkMode.classList.toggle("fa-moon");
   iconDarkMode.classList.toggle("fa-sun");
+  iconDarkMode.classList.toggle("text-white");
+  iconDarkMode.classList.toggle("text-dark-primary");
+  btnDarkMode.classList.toggle("bg-dark-primary");
+  btnDarkMode.classList.toggle("bg-white");
   htmlElement.classList.toggle("dark");
   logoItenas.src = "../assets/images/itenas-logo-full-invert.png";
 } else {
@@ -44,6 +48,10 @@ btnDarkMode.addEventListener("click", () => {
   // Mengganti ikon dan menambah/menghapus kelas "dark" pada elemen HTML
   iconDarkMode.classList.toggle("fa-moon");
   iconDarkMode.classList.toggle("fa-sun");
+  iconDarkMode.classList.toggle("text-white");
+  iconDarkMode.classList.toggle("text-dark-primary");
+  btnDarkMode.classList.toggle("bg-dark-primary");
+  btnDarkMode.classList.toggle("bg-white");
   htmlElement.classList.toggle("dark");
 
   // Mengganti src gambar sesuai dengan mode terang atau gelap
@@ -54,4 +62,3 @@ btnDarkMode.addEventListener("click", () => {
   }
 });
 // dark mode end
-

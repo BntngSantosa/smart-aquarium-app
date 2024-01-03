@@ -10,6 +10,6 @@ function showModalFailed() {
 btnOkFailed.addEventListener("click", () => {
   modalFailed.classList.remove("flex");
   modalFailed.classList.add("hidden");
-  window.location.href = "../public/";
+  window.location.href = "../iot-project";
 });
 // modal failed end

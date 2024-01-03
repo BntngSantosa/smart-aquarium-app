@@ -5,7 +5,7 @@ session_start();
 // Periksa apakah pengguna sudah login
 if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
     // Jika tidak login, arahkan ke halaman login
-    header("Location: ../auth/login");
+    header("Location: ../");
     exit();
 }
 
@@ -17,7 +17,8 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iot-app</title>
-    <link rel="stylesheet" href="../public/dist/output.css" />
+    <link rel="icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="stylesheet" href="../dist/output.css" />
 
     <script src="https://kit.fontawesome.com/76e513ada2.js"crossorigin="anonymous"></script>
   </head>
@@ -29,7 +30,7 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
         <img src="../assets/images/logo.png" alt="logo" class="mr-[10px] w-[40px] h-[25px] sm:w-[40px] sm:h-[35px]"/>
         <p class="text-md text-white font-normal sm:text-lg">ocean<span class="font-bold text-logo-color">Sage</span></p>
       </div>
-      <div class="w-full h-4/5 flex flex-col justify-between px-[20px]">
+      <div class="w-full h-3/4 flex flex-col justify-between px-[20px] sm:h-[75%] lg:h-[80%]">
         <ul class="w-full mt-5 grid grid-cols-1 gap-5">
           <li class="">
             <a href="DashboardView.php" class="flex items-center gap-[20px] text-[14px] font-normal text-secondary hover:text-white px-3 transition-all duration-100">
@@ -109,18 +110,63 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
         <div class="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <div class="p-5 rounded-[16px] bg-white border-b-4 border-logo-color dark:bg-dark-primary">
             <h3 class="font-medium text-lg text-primary dark:text-dark-fourth">Temperature</h3>
-            <div id="temp" class="h-[200px] text-lg z-0"></div>
+            <div id="temp" class="h-[180px] text-lg z-0"></div>
             <p id="infoTemp" class="text-center text-[14px] font-medium dark:text-dark-fourth"></p>
           </div>
           <div class="p-5 rounded-[16px] bg-white border-b-4 border-light-yellow dark:bg-dark-primary">
             <h3 class="font-medium text-lg text-primary dark:text-dark-fourth">Clarity</h3>
-            <div id="clarity" class="h-[200px] text-lg z-0"></div>
+            <div id="clarity" class="h-[180px] text-lg z-0"></div>
             <p id="infoClarity" class="text-center text-[14px] font-medium dark:text-dark-fourth"></p>
           </div>
           <div class="p-5 rounded-[16px] bg-white border-b-4 border-light-red dark:bg-dark-primary">
             <h3 class="font-medium text-lg text-primary dark:text-dark-fourth">Water level</h3>
-            <div id="distance" class="h-[200px] text-lg z-0"></div>
+            <div id="distance" class="h-[180px] text-lg z-0"></div>
             <p id="infoDistance" class="text-center text-[14px] font-medium dark:text-dark-fourth"></p>
+          </div>
+        </div>
+        <div class="p-5 bg-white rounded-[16px] border-b-4 border-light-red flex flex-col justify-between gap-5 dark:bg-dark-primary">
+          <div class="">  
+            <label for="yearSelector" class="text-primary text-md font-medium dark:text-dark-fourth">Select Years</label>
+            <select id="yearSelector" class="focus:outline-none dark:bg-dark-primary dark:text-dark-fourth">
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024" selected>2024</option>
+            </select>
+          </div>
+          <p id="notFoundData" class="text-[12px] text-slate-500 font-Poppins hidden md:text-[14px] md:font-medium lg:text-[16px]">No data available for the selected year</p>
+          <div id="chartDiv" class="">
+            <canvas id="chartTemp" height="188" class=""></canvas>
+          </div>
+        </div>
+        <div class="p-5 bg-white rounded-[16px] border-b-4 border-secure flex flex-col justify-between gap-5 dark:bg-dark-primary">
+          <div class="">  
+            <label for="yearSelectorClarity" class="text-primary text-md font-medium dark:text-dark-fourth">Select Years</label>
+            <select id="yearSelectorClarity" class="focus:outline-none dark:bg-dark-primary dark:text-dark-fourth">
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024" selected>2024</option>
+            </select>
+          </div>
+          <p id="notFoundDataClarity" class="text-[12px] text-slate-500 font-Poppins hidden md:text-[14px] md:font-medium lg:text-[16px]">No data available for the selected year</p>
+          <div id="chartDivClarity" class="">
+            <canvas id="chartClarity" height="188" class=""></canvas>
+          </div>
+        </div>
+        <div class="p-5 bg-white rounded-[16px] border-b-4 border-light-yellow flex flex-col justify-between gap-5 dark:bg-dark-primary">
+          <div class="">  
+            <label for="yearSelectorDistance" class="text-primary text-md font-medium dark:text-dark-fourth">Select Years</label>
+            <select id="yearSelectorDistance" class="focus:outline-none dark:bg-dark-primary dark:text-dark-fourth">
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024" selected>2024</option>
+            </select>
+          </div>
+          <p id="notFoundDataDistance" class="text-[12px] text-slate-500 font-Poppins hidden md:text-[14px] md:font-medium lg:text-[16px]">No data available for the selected year</p>
+          <div id="chartDivDistance" class="">
+            <canvas id="chartDistance" height="188" class=""></canvas>
           </div>
         </div>
       </section>
@@ -156,13 +202,17 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
     <!-- Reconnect notif end -->
 
     <!-- button dark mode start -->
-    <div id="btnDarkMode" class="w-[40px] h-[40px] bg-primary flex rounded-l-[50px] fixed right-0 bottom-5 cursor-pointer ">
-      <i id="iconDarkMode" class="fa-solid fa-moon m-auto text-white text-lg transition-all ease-in-out duration-150"></i>
+    <div id="btnDarkMode" class="w-[35px] h-[35px] bg-dark-primary flex items-center justify-center rounded-l-[50px] fixed right-0 bottom-5 cursor-pointer ">
+      <i id="iconDarkMode" class="fa-solid fa-moon text-white text-lg transition-all ease-in-out duration-150"></i>
     </div>
     <!-- button dark mode end -->
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jscharting.com/latest/jscharting.js"></script>
     <script src="https://code.jscharting.com/latest/jscharting-widgets.js"></script>
+    <script src="../assets/js/chartTemp.js"></script>
+    <script src="../assets/js/chartClarity.js"></script>
+    <script src="../assets/js/chartDistance.js"></script>
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/mqttws31.js"></script>
     <script src="../assets/js/mqtt-subs.js"></script>

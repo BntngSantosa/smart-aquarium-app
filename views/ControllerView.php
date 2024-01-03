@@ -5,7 +5,7 @@ session_start();
 // Periksa apakah pengguna sudah login
 if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
     // Jika tidak login, arahkan ke halaman login
-    header("Location: ../auth/login");
+    header("Location: ../");
     exit();
 }
 
@@ -17,7 +17,8 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iot-app</title>
-    <link rel="stylesheet" href="../public/dist/output.css" />
+    <link rel="icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="stylesheet" href="../dist/output.css" />
 
     <script src="https://kit.fontawesome.com/76e513ada2.js" crossorigin="anonymous"></script>
   </head>
@@ -29,7 +30,7 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
         <img src="../assets/images/logo.png" alt="logo" class="mr-[10px] w-[40px] h-[25px] sm:w-[40px] sm:h-[35px]"/>
         <p class="text-md text-white font-normal sm:text-lg">ocean<span class="font-bold text-logo-color">Sage</span></p>
       </div>
-      <div class="w-full h-4/5 flex flex-col justify-between px-[20px]">
+      <div class="w-full h-3/4 flex flex-col justify-between px-[20px] sm:h-[75%] lg:h-[80%]">
         <ul class="w-full mt-5 grid grid-cols-1 gap-5">
           <li class="">
             <a href="DashboardView.php" class="flex items-center gap-[20px] text-[14px] font-normal text-secondary hover:text-white px-3 transition-all duration-100">
@@ -183,8 +184,8 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
     <!-- main end -->
 
     <!-- button dark mode start -->
-    <div id="btnDarkMode" class="w-[40px] h-[40px] bg-primary flex rounded-l-[50px] fixed right-0 bottom-5 cursor-pointer ">
-      <i id="iconDarkMode" class="fa-solid fa-moon m-auto text-white text-lg transition-all ease-in-out duration-150"></i>
+    <div id="btnDarkMode" class="w-[35px] h-[35px] bg-dark-primary flex items-center justify-center rounded-l-[50px] fixed right-0 bottom-5 cursor-pointer ">
+      <i id="iconDarkMode" class="fa-solid fa-moon text-white text-lg transition-all ease-in-out duration-150"></i>
     </div>
     <!-- button dark mode end -->
 
