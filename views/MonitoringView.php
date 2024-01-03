@@ -128,8 +128,6 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
           <div class="">  
             <label for="yearSelector" class="text-primary text-md font-medium dark:text-dark-fourth">Select Years</label>
             <select id="yearSelector" class="focus:outline-none dark:bg-dark-primary dark:text-dark-fourth">
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
               <option value="2023">2023</option>
               <option value="2024" selected>2024</option>
             </select>
@@ -143,8 +141,6 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
           <div class="">  
             <label for="yearSelectorClarity" class="text-primary text-md font-medium dark:text-dark-fourth">Select Years</label>
             <select id="yearSelectorClarity" class="focus:outline-none dark:bg-dark-primary dark:text-dark-fourth">
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
               <option value="2023">2023</option>
               <option value="2024" selected>2024</option>
             </select>
@@ -158,8 +154,6 @@ if (!isset($_SESSION['AdminID']) || empty($_SESSION['AdminID'])) {
           <div class="">  
             <label for="yearSelectorDistance" class="text-primary text-md font-medium dark:text-dark-fourth">Select Years</label>
             <select id="yearSelectorDistance" class="focus:outline-none dark:bg-dark-primary dark:text-dark-fourth">
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
               <option value="2023">2023</option>
               <option value="2024" selected>2024</option>
             </select>

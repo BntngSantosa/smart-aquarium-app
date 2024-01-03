@@ -6,9 +6,7 @@ const selectedYearDistance = document.querySelector("#yearSelectorDistance");
 const fetchDataAndUpdateChartDistance = () => {
   const valueSelected = selectedYearDistance.value;
 
-  fetch(
-    `http://localhost/iot-project/api/get_distance.php?year=${valueSelected}`
-  )
+  fetch(`http://localhost/iot-project/api/get_distance.php?year=${valueSelected}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -16,7 +14,7 @@ const fetchDataAndUpdateChartDistance = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+
       if (data && data.length > 0) {
         chartDivDistanceElement.appendChild(chartDistanceElement);
         notFoundDataDistanceElement.classList.add("hidden");
@@ -79,7 +77,4 @@ const fetchDataAndUpdateChartDistance = () => {
 fetchDataAndUpdateChartDistance();
 
 // Event listener for changes in the selected year
-selectedYearDistance.addEventListener(
-  "change",
-  fetchDataAndUpdateChartDistance
-);
+selectedYearDistance.addEventListener("change", fetchDataAndUpdateChartDistance);
